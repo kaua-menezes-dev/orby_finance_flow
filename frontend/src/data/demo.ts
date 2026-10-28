@@ -2,8 +2,8 @@
  * Fictional demonstration data shown in the landing previews.
  * Matches the approved "Dashboard Home" Figma frame (October 2026).
  */
-export type CategoryTone = 'lavanda' | 'menta'
-export type TransactionIcon = 'utensils' | 'cart' | 'briefcase'
+export type CategoryTone = 'lavanda' | 'menta' | 'ceu' | 'pessego' | 'rosa' | 'outros'
+export type TransactionIcon = 'utensils' | 'cart' | 'briefcase' | 'home' | 'repeat' | 'tag' | 'car'
 
 export type DemoTransaction = {
   id: string
