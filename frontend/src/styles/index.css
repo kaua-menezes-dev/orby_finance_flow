@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+/*
+ * Orby design tokens — mirrored from the approved Figma design system
+ * (collections "Color", "Spacing & Radius" and the effect styles).
+ * Names stay close to the Figma variables so they can be traced back.
+ */
+@theme {
+  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
+
+  /* color/bg/* */
+  --color-canvas: #f8f8fc;
+  --color-surface: #ffffff;
+  --color-subtle: #f0eff6;
+  --color-pressed: #e7e7f0;
+  --color-brand-soft: #eeeafe;
+  --color-brand-wash: #f6f4ff;
+  --color-scrim: #17171d66;
+
+  /* color/action/* */
+  --color-primary: #6254d8;
+  --color-primary-hover: #5547cc;
+  --color-primary-pressed: #4b3fb8;
+
+  /* color/text/* */
+  --color-ink: #17171d;
+  --color-ink-secondary: #6b6b78;
+  --color-ink-disabled: #9a9aa8;
+  --color-on-brand-soft: #4b3fb8;
+
+  /* color/border/* */
+  --color-line: #e7e7f0;
+  --color-line-strong: #c9c9d8;
+
+  /* color/brand/* */
+  --color-graphic: #8b7cf6;
+  --color-lavender: #b7aeff;
+
+  /* color/money/* and color/chart/* */
+  --color-income: #0a7a5e;
+  --color-chart-1: #7a6ceb;
+  --color-chart-1-bg: #eceafc;
+  --color-chart-2: #1a9577;
+  --color-chart-2-bg: #dff0ec;
+
+  /* radius/* */
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  /* Effect styles */
+  --shadow-tile: 0 1px 2px #1717280a, 0 10px 28px -14px #483aaa2e; /* Elevation/1 Tile */
+  --shadow-floating: 0 2px 4px #1717280d, 0 24px 48px -20px #483aaa47; /* Elevation/2 Floating */
+  --shadow-action: 0 8px 18px -10px #6254d8b2; /* Elevation/Action */
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    overflow-x: clip;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: var(--color-brand-soft);
+    color: var(--color-on-brand-soft);
+  }
+}

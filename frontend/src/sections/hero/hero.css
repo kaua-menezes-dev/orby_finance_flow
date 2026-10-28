@@ -1,0 +1,185 @@
+/*
+ * Hero composition.
+ *
+ * The visual stage (ribbon + product previews) is laid out in the exact
+ * Figma coordinate space — 1440 × 440 below the CTAs on desktop, 390 × 435
+ * on mobile — and scaled as one unit through --stage-scale (set by
+ * HeroStage). Layer boxes are the Figma bounding boxes; rotation and card
+ * scale live on .hero-art so motion wrappers stay axis-aligned.
+ */
+
+.hero-wash {
+  background: radial-gradient(
+    ellipse 55.6% 66.7% at 50% 6.7%,
+    #eeeafe 0%,
+    rgb(246 244 255 / 0.6) 55%,
+    rgb(248 248 252 / 0) 100%
+  );
+}
+
+/* ---------- Typography ---------- */
+
+.hero-title {
+  --hero-h: min(12.8vw, 50px);
+  font-size: var(--hero-h);
+  line-height: calc(var(--hero-h) * 1.0435);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    --hero-h: clamp(50px, 6.39vw, 92px);
+  }
+}
+
+.hero-title__accent {
+  font-family: var(--font-serif);
+  font-size: 1.2174em; /* 112 / 92 */
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+}
+
+/* Line masks for the entrance reveal; padding keeps italic overhangs visible. */
+.hero-line {
+  display: block;
+  overflow: clip;
+  padding: 0 0.12em 0.06em;
+  margin: 0 -0.12em -0.06em;
+}
+
+.hero-line__inner {
+  display: inline-block;
+}
+
+/* ---------- Stage ---------- */
+
+.hero-stage {
+  --stage-w: 390px;
+  --stage-h: 435px;
+  position: relative;
+  height: calc(var(--stage-h) * var(--stage-scale, 1));
+  pointer-events: none;
+}
+
+.hero-stage__canvas {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--stage-w);
+  height: var(--stage-h);
+  transform: translateX(-50%) scale(var(--stage-scale, 1));
+  transform-origin: 50% 0;
+}
+
+.hero-layer {
+  position: absolute;
+}
+
+.hero-fill {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-art {
+  width: 100%;
+  height: 100%;
+  rotate: var(--art-rotate, 0deg);
+  transition:
+    rotate 400ms var(--ease-out-expo),
+    translate 400ms var(--ease-out-expo);
+}
+
+.hero-art__scaler {
+  width: max-content;
+  transform: scale(var(--art-scale, 1));
+  transform-origin: 0 0;
+}
+
+/* Mobile 390 composition */
+.hero-layer--ribbon {
+  left: -430px;
+  top: -195px;
+  width: 1240px;
+  height: 698px;
+}
+
+.hero-layer--chart {
+  display: none;
+}
+
+.hero-layer--balance {
+  --art-scale: 0.8;
+  --art-rotate: -4deg;
+  left: 28.2px;
+  top: 47.5px;
+  width: 197.6px;
+  height: 124px;
+}
+
+.hero-layer--transactions {
+  --art-scale: 0.45;
+  --art-rotate: 2deg;
+  left: 31.1px;
+  top: 210.9px;
+  width: 352.8px;
+  height: 172.2px;
+}
+
+/* Desktop 1440 composition */
+@media (min-width: 768px) {
+  .hero-stage {
+    --stage-w: 1440px;
+    --stage-h: 440px;
+  }
+
+  .hero-layer--ribbon {
+    left: -80px;
+    top: -252px;
+    width: 1600px;
+    height: 900px;
+  }
+
+  .hero-layer--chart {
+    --art-scale: 0.6;
+    --art-rotate: 3deg;
+    display: block;
+    left: 898.5px;
+    top: 40.15px;
+    width: 470.4px;
+    height: 235.2px;
+  }
+
+  .hero-layer--balance {
+    --art-scale: 1.2;
+    --art-rotate: -4deg;
+    left: 156.1px;
+    top: 89.45px;
+    width: 296.4px;
+    height: 186px;
+  }
+
+  .hero-layer--transactions {
+    --art-scale: 0.58;
+    --art-rotate: 1.5deg;
+    left: 545px;
+    top: 201.9px;
+    width: 454.72px;
+    height: 222px;
+  }
+}
+
+/* Cursor proximity: the hovered card straightens and lifts (desktop pointers). */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-card {
+    pointer-events: auto;
+  }
+
+  .hero-card:hover .hero-art {
+    rotate: calc(var(--art-rotate, 0deg) * 0.375);
+    translate: 0 -10px;
+  }
+}

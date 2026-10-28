@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle id="Orb" cx="13" cy="13" r="13" fill="url(#paint0_radial_0_287)"/>
+<defs>
+<radialGradient id="paint0_radial_0_287" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(13 13) scale(13)">
+<stop stop-color="white"/>
+<stop offset="0.18" stop-color="#B7AEFF"/>
+<stop offset="0.62" stop-color="#8B7CF6"/>
+<stop offset="1" stop-color="#6254D8"/>
+</radialGradient>
+</defs>
+</svg>
