@@ -1,17 +1,6 @@
-import { BriefcaseBusiness, CreditCard, ShoppingCart, Utensils, type LucideIcon } from 'lucide-react'
-import { formatSignedMoney, type CategoryTone, type DemoTransaction, type TransactionIcon } from '../../data/demo'
-
-const ICONS: Record<TransactionIcon, LucideIcon> = {
-  utensils: Utensils,
-  cart: ShoppingCart,
-  briefcase: BriefcaseBusiness,
-}
-
-// Category Icon: chart colour at 14% fill + icon in full colour.
-const TONES: Record<CategoryTone, { tile: string; fg: string; dot: string }> = {
-  lavanda: { tile: 'bg-chart-1-bg', fg: 'text-chart-1', dot: 'bg-chart-1' },
-  menta: { tile: 'bg-chart-2-bg', fg: 'text-chart-2', dot: 'bg-chart-2' },
-}
+import { CreditCard } from 'lucide-react'
+import { formatSignedMoney, type DemoTransaction } from '../../data/demo'
+import { CATEGORY_ICONS as ICONS, CATEGORY_TONES as TONES } from './category'
 
 const Separator = () => <span aria-hidden className="size-[3px] rounded-full bg-ink-disabled" />
 
